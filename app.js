@@ -2,12 +2,12 @@ const express = require("express");
 const request = require("request");
 const app = express();
 const port = process.env.PORT || 3001;
+const delay = process.env.DELAY || "60000";
+const host = process.env.HOST || 'google.com';
 
 app.use((req, res, next) => {
-  setTimeout(next, 60000);
+  setTimeout(next, parseInt(delay));
 });
-
-const host = process.env.HOST || 'google.com';
 
 app.use((req, res) => {
   const options = {
